@@ -1,14 +1,23 @@
-const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-async function gerarHash(senha) {
-  return await bcrypt.hash(senha, 10);
+// Função responsável por gerar o token de autenticação do usuário
+function gerarToken(user) {
+  // jwt.sign cria um token com informações do usuário
+  return jwt.sign(
+    {
+      // Dados que ficam guardados dentro do token
+      id: user.id,
+      email: user.email,
+      tipo: user.tipo
+    },
+
+    // Chave secreta usada para assinar o token
+    // Ela vem do arquivo .env
+    process.env.JWT_SECRET,
+
+    // Tempo de validade do token
+    { expiresIn: "1d" }
+  );
 }
 
-async function compararSenha(senha, hash) {
-  return await bcrypt.compare(senha, hash);
-}
-
-module.exports = {
-  gerarHash,
-  compararSenha
-};
+module.exports = gerarToken;
