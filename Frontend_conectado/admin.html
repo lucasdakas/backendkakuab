@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Kakuab Market</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { background:#f6f7f2; }
+    main { max-width: 1000px; margin: 40px auto; padding:24px; }
+    .card { background:white; border-radius:18px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,.08); margin-bottom:20px; }
+    button { border:0; border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:700; margin:3px; }
+    .ok { background:#0b7d3b; color:white; }
+    .bad { background:#b42318; color:white; }
+    .light { background:#e9efe1; color:#0f3d25; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:10px; border-bottom:1px solid #e6e6e6; text-align:left; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1>Painel Administrativo</h1>
+      <p>Aprovação e reprovação de anúncios pendentes.</p>
+      <button class="light" onclick="logout()">Sair</button>
+    </div>
+    <div class="card">
+      <h2>Anúncios pendentes</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Título</th><th>Fornecedor</th><th>Ações</th></tr></thead>
+        <tbody id="pendentesBody"><tr><td colspan="4">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

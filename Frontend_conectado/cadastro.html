@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro | Kakuab Market</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/cadastro.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+  <main class="cadastro-page" id="cadastroPage">
+
+    <!-- ÁREA DO FORMULÁRIO -->
+    <section class="cadastro-form-area">
+      <div class="login-content">
+        <h1 class="cadastro-title">
+          Crie sua conta no<br>
+          KAKUAB MARKET
+        </h1>
+
+        <p class="cadastro-subtitle" id="cadastroSubtitle">
+          Junte-se à comunidade sustentável 🌱
+        </p>
+
+        <form class="login-form" id="cadastroForm">
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">person_outline</span>
+            <input type="text" id="registerName" placeholder="Nome Completo" required>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">email</span>
+            <input type="email" id="registerEmail" placeholder="E-mail" required>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">badge</span>
+            <select id="registerTipo" required>
+              <option value="comprador">Comprador</option>
+              <option value="fornecedor">Fornecedor</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">apartment</span>
+            <input type="text" id="registerCnpj" placeholder="CNPJ" maxlength="18" required>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">business</span>
+            <input type="text" id="registerRazaoSocial" placeholder="Razão social / Empresa" required>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">store</span>
+            <input type="text" id="registerNomeFantasia" placeholder="Nome fantasia" required>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">lock_outline</span>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+
+            <button type="button" class="toggle-password" data-target="registerPassword">
+              <span class="material-icons-outlined">visibility_off</span>
+            </button>
+          </div>
+
+          <div class="input-group">
+            <span class="material-icons-outlined input-icon">lock_outline</span>
+            <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
+
+            <button type="button" class="toggle-password" data-target="confirmPassword">
+              <span class="material-icons-outlined">visibility_off</span>
+            </button>
+          </div>
+
+          <button type="submit" class="login-btn">
+            Criar Conta
+          </button>
+        </form>
+
+        <div class="login-prompt">
+          <span>Já possui conta?</span>
+          <a href="login.html">Faça login!</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREA VISUAL / LOGO -->
+    <section class="cadastro-visual-area">
+      <div class="visual-content">
+        <img src="assets/images/logo.png" alt="Logo Kakuab Market">
+
+        <h2 id="visualTitle">
+          Compre melhor, negocie com confiança.
+        </h2>
+
+        <p id="visualText">
+          Encontre fornecedores de alimentos, compare anúncios e salve suas melhores oportunidades.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

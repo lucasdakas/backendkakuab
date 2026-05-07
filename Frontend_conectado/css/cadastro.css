@@ -1,0 +1,277 @@
+/* Página principal */
+.cadastro-page {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f7ecdd;
+  overflow: hidden;
+}
+
+/* Área do formulário */
+.cadastro-form-area {
+  background: #f7ecdd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  order: 1;
+  transition: all 0.5s ease;
+}
+
+/* Área visual */
+.cadastro-visual-area {
+  background: #2f8c37;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  order: 2;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* Bolhas decorativas */
+.cadastro-visual-area::before,
+.cadastro-visual-area::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cadastro-visual-area::before {
+  width: 340px;
+  height: 340px;
+  top: -70px;
+  right: -80px;
+}
+
+.cadastro-visual-area::after {
+  width: 300px;
+  height: 300px;
+  bottom: -90px;
+  left: -70px;
+}
+
+/* Quando selecionar fornecedor: formulário vai para direita */
+.cadastro-page.fornecedor-mode .cadastro-form-area {
+  order: 2;
+}
+
+.cadastro-page.fornecedor-mode .cadastro-visual-area {
+  order: 1;
+}
+
+/* Conteúdo do formulário */
+.login-content {
+  width: 100%;
+  max-width: 420px;
+  animation: entradaFormulario 0.45s ease;
+}
+
+@keyframes entradaFormulario {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cadastro-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--green-900);
+  margin-bottom: 8px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.cadastro-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 26px;
+}
+
+/* Formulário */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Input geral */
+.input-group {
+  width: 100%;
+  height: 54px;
+  background: #fff;
+  border-radius: 22px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 48px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.input-group select {
+  cursor: pointer;
+}
+
+.input-icon {
+  position: absolute;
+  left: 18px;
+  color: #b7b7b7;
+  font-size: 20px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: #b7b7b7;
+  cursor: pointer;
+}
+
+/* Botão */
+.login-btn {
+  height: 54px;
+  border: none;
+  border-radius: 22px;
+  background: #359844;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #267a32;
+  transform: translateY(-2px);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Login prompt */
+.login-prompt {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.login-prompt a {
+  display: block;
+  margin-top: 4px;
+  color: var(--green-700);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+/* Conteúdo visual */
+.visual-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 440px;
+  animation: entradaVisual 0.45s ease;
+}
+
+@keyframes entradaVisual {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.visual-content img {
+  width: 280px;
+  max-width: 80%;
+  margin-bottom: 28px;
+  background: white;
+  padding: 16px;
+}
+
+.visual-content h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.visual-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .cadastro-page {
+    grid-template-columns: 1fr;
+  }
+
+  .cadastro-form-area,
+  .cadastro-visual-area,
+  .cadastro-page.fornecedor-mode .cadastro-form-area,
+  .cadastro-page.fornecedor-mode .cadastro-visual-area {
+    order: initial;
+  }
+
+  .cadastro-visual-area {
+    min-height: 360px;
+  }
+
+  .cadastro-title,
+  .cadastro-subtitle {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cadastro-form-area {
+    padding: 28px 20px;
+  }
+
+  .cadastro-title {
+    font-size: 1.4rem;
+  }
+
+  .input-group {
+    height: 50px;
+  }
+
+  .visual-content h2 {
+    font-size: 1.4rem;
+  }
+}
