@@ -6,7 +6,6 @@
   <title>Cadastro | Kakuab Market</title>
 
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/cadastro.css">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
@@ -15,9 +14,9 @@
 <body>
   <main class="cadastro-page" id="cadastroPage">
 
-    <!-- ÁREA DO FORMULÁRIO -->
+    <!-- LADO DO FORMULÁRIO -->
     <section class="cadastro-form-area">
-      <div class="login-content">
+      <div class="cadastro-content">
         <h1 class="cadastro-title">
           Crie sua conta no<br>
           KAKUAB MARKET
@@ -27,11 +26,11 @@
           Junte-se à comunidade sustentável 🌱
         </p>
 
-        <form class="login-form" id="cadastroForm">
+        <form class="cadastro-form" id="cadastroForm">
 
           <div class="input-group">
             <span class="material-icons-outlined input-icon">person_outline</span>
-            <input type="text" id="registerName" placeholder="Nome Completo" required>
+            <input type="text" id="registerName" placeholder="Nome completo" required>
           </div>
 
           <div class="input-group">
@@ -63,6 +62,52 @@
           </div>
 
           <div class="input-group">
+            <span class="material-icons-outlined input-icon">call</span>
+            <input type="text" id="registerTelefone" placeholder="Telefone / WhatsApp" maxlength="15">
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <span class="material-icons-outlined input-icon">location_city</span>
+              <input type="text" id="registerCidade" placeholder="Cidade">
+            </div>
+
+            <div class="input-group estado-group">
+              <span class="material-icons-outlined input-icon">map</span>
+              <select id="registerEstado">
+                <option value="">UF</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
             <span class="material-icons-outlined input-icon">lock_outline</span>
             <input type="password" id="registerPassword" placeholder="Senha" required>
 
@@ -73,14 +118,14 @@
 
           <div class="input-group">
             <span class="material-icons-outlined input-icon">lock_outline</span>
-            <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
+            <input type="password" id="confirmPassword" placeholder="Confirmar senha" required>
 
             <button type="button" class="toggle-password" data-target="confirmPassword">
               <span class="material-icons-outlined">visibility_off</span>
             </button>
           </div>
 
-          <button type="submit" class="login-btn">
+          <button type="submit" class="cadastro-btn">
             Criar Conta
           </button>
         </form>
@@ -92,7 +137,7 @@
       </div>
     </section>
 
-    <!-- ÁREA VISUAL / LOGO -->
+    <!-- LADO VERDE / VISUAL -->
     <section class="cadastro-visual-area">
       <div class="visual-content">
         <img src="assets/images/logo.png" alt="Logo Kakuab Market">
