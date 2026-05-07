@@ -3,8 +3,10 @@ const rateLimit = require("express-rate-limit");
 
 const router = express.Router();
 
-const { register, login } = require("../controllers/authController");
+const { register, login, me } = require("../controllers/authController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
+// Limita tentativas de login para melhorar segurança
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
@@ -13,7 +15,13 @@ const loginLimiter = rateLimit({
   }
 });
 
+// Cadastro de fornecedor, comprador ou admin
 router.post("/register", register);
+
+// Login com proteção contra muitas tentativas
 router.post("/login", loginLimiter, login);
+
+// Perfil do usuário logado
+router.get("/me", authMiddleware, me);
 
 module.exports = router;
