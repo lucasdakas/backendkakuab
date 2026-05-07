@@ -7,31 +7,40 @@ const visualText = document.getElementById("visualText");
 const cadastroSubtitle = document.getElementById("cadastroSubtitle");
 
 const cnpjInput = document.getElementById("registerCnpj");
+const telefoneInput = document.getElementById("registerTelefone");
 
 // Muda o layout quando trocar comprador/fornecedor
 function atualizarLayoutPorTipo() {
   const tipo = tipoSelect.value;
 
-  if (tipo === "fornecedor") {
-    cadastroPage.classList.add("fornecedor-mode");
+  cadastroPage.classList.add("animating");
 
-    cadastroSubtitle.textContent = "Cadastre sua empresa e anuncie seus produtos 🌱";
+  setTimeout(() => {
+    if (tipo === "fornecedor") {
+      cadastroPage.classList.add("fornecedor-mode");
 
-    visualTitle.textContent = "Venda seus produtos para empresas.";
-    visualText.textContent =
-      "Anuncie alimentos, gerencie seus produtos e conecte sua empresa com compradores B2B.";
-  } else {
-    cadastroPage.classList.remove("fornecedor-mode");
+      cadastroSubtitle.textContent = "Cadastre sua empresa e anuncie seus produtos 🌱";
 
-    cadastroSubtitle.textContent = "Junte-se à comunidade sustentável 🌱";
+      visualTitle.textContent = "Venda seus produtos para empresas.";
+      visualText.textContent =
+        "Anuncie alimentos, gerencie seus produtos e conecte sua empresa com compradores B2B.";
+    } else {
+      cadastroPage.classList.remove("fornecedor-mode");
 
-    visualTitle.textContent = "Compre melhor, negocie com confiança.";
-    visualText.textContent =
-      "Encontre fornecedores de alimentos, compare anúncios e salve suas melhores oportunidades.";
-  }
+      cadastroSubtitle.textContent = "Junte-se à comunidade sustentável 🌱";
+
+      visualTitle.textContent = "Compre melhor, negocie com confiança.";
+      visualText.textContent =
+        "Encontre fornecedores de alimentos, compare anúncios e salve suas melhores oportunidades.";
+    }
+
+    setTimeout(() => {
+      cadastroPage.classList.remove("animating");
+    }, 250);
+  }, 180);
 }
 
-// Máscara simples de CNPJ
+// Máscara de CNPJ
 function aplicarMascaraCNPJ(valor) {
   return valor
     .replace(/\D/g, "")
@@ -42,8 +51,21 @@ function aplicarMascaraCNPJ(valor) {
     .slice(0, 18);
 }
 
+// Máscara simples de telefone
+function aplicarMascaraTelefone(valor) {
+  return valor
+    .replace(/\D/g, "")
+    .replace(/^(\d{2})(\d)/, "($1) $2")
+    .replace(/(\d{5})(\d)/, "$1-$2")
+    .slice(0, 15);
+}
+
 cnpjInput.addEventListener("input", () => {
   cnpjInput.value = aplicarMascaraCNPJ(cnpjInput.value);
+});
+
+telefoneInput.addEventListener("input", () => {
+  telefoneInput.value = aplicarMascaraTelefone(telefoneInput.value);
 });
 
 // Mostrar/ocultar senha
@@ -73,6 +95,9 @@ cadastroForm.addEventListener("submit", async (event) => {
   const cnpj = document.getElementById("registerCnpj").value.trim();
   const razao_social = document.getElementById("registerRazaoSocial").value.trim();
   const nome_fantasia = document.getElementById("registerNomeFantasia").value.trim();
+  const telefone = document.getElementById("registerTelefone").value.trim();
+  const cidade = document.getElementById("registerCidade").value.trim();
+  const estado = document.getElementById("registerEstado").value.trim();
   const senha = document.getElementById("registerPassword").value;
   const confirmarSenha = document.getElementById("confirmPassword").value;
 
@@ -103,7 +128,10 @@ cadastroForm.addEventListener("submit", async (event) => {
     tipo,
     cnpj,
     razao_social,
-    nome_fantasia
+    nome_fantasia,
+    telefone,
+    cidade,
+    estado
   };
 
   const botao = cadastroForm.querySelector(".login-btn");
@@ -139,5 +167,4 @@ cadastroForm.addEventListener("submit", async (event) => {
 
 tipoSelect.addEventListener("change", atualizarLayoutPorTipo);
 
-// Inicia no modo comprador
 atualizarLayoutPorTipo();
