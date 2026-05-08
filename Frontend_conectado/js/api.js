@@ -35,6 +35,11 @@ function authHeaders() {
 async function apiRequest(endpoint, options = {}) {
   const isFormData = options.body instanceof FormData;
 
+  console.log(`[API Request] Enviando para ${API_BASE_URL}${endpoint}`);
+  if (!isFormData && options.body) {
+    console.log(`[API Request] Payload:`, JSON.parse(options.body));
+  }
+
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
     headers: {
@@ -44,15 +49,21 @@ async function apiRequest(endpoint, options = {}) {
     }
   });
 
+  console.log(`[API Request] Status da resposta: ${response.status}`);
+
   let data = null;
   try {
     data = await response.json();
+    console.log(`[API Request] Dados recebidos:`, data);
   } catch (_) {
+    console.warn(`[API Request] A resposta não pôde ser convertida para JSON.`);
     data = null;
   }
 
   if (!response.ok) {
-    throw new Error(data?.error || data?.message || "Erro na comunicação com a API");
+    const erroMsg = data?.error || data?.message || "Erro na comunicação com a API";
+    console.error(`[API Request] Erro capturado:`, erroMsg);
+    throw new Error(erroMsg);
   }
 
   return data;
