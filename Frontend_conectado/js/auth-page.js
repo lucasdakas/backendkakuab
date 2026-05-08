@@ -97,6 +97,10 @@ async function configurarCadastro() {
     const tipo = document.getElementById("registerTipo")?.value || "comprador";
     const razao_social = document.getElementById("registerRazaoSocial")?.value.trim() || nome;
     const nome_fantasia = document.getElementById("registerNomeFantasia")?.value.trim() || nome;
+    const cnpj = document.getElementById("registerCnpj")?.value.trim() || null;
+    const telefone = document.getElementById("registerTelefone")?.value.trim() || null;
+    const cidade = document.getElementById("registerCidade")?.value.trim() || null;
+    const estado = document.getElementById("registerEstado")?.value.trim() || null;
     const btn = form.querySelector("button[type='submit']");
 
     if (senha !== confirmar) {
@@ -111,7 +115,7 @@ async function configurarCadastro() {
 
     try {
       setButtonLoading(btn, true, "Criando conta...");
-      await KakuabAPI.register({ nome, email, senha, tipo, razao_social, nome_fantasia });
+      await KakuabAPI.register({ nome, email, senha, tipo, razao_social, nome_fantasia, cnpj, telefone, cidade, estado });
 
       mostrarMensagem("Conta criada com sucesso! Faça login para continuar.", "sucesso");
       setTimeout(() => {
